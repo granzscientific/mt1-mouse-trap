@@ -1,0 +1,8 @@
+packages:
+  granzscientific.bm1-base: !include base.yaml
+
+dashboard_import:
+  package_import_url: github://granzscientific/mt1-mouse-trap/gs-mt1-mouse-trap.yaml
+
+esphome:
+  name_add_mac_suffix: true
