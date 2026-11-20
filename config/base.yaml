@@ -1,5 +1,5 @@
 substitutions:
-  name: gs-sn2
+  name: gs-mt1
   friendly_name: "GS MT1 Mouse Trap"
 
   # See https://esphome.io/components/esphome.html#esphome-creators-project
@@ -11,11 +11,10 @@ substitutions:
   wait_for_initial_setup_duration: 5min
   wait_for_wifi_duration: 10s
   wait_for_api_connection_duration: 30s
-  wait_for_ota_update_mode_duration: 5s
-  sleep_duration: 15min
+  sleep_duration: 60min
 
 packages:
-  granzscientific.sn1-ota: github://granzscientific/esphome-tools/config/ota-sleep-control.yaml
+  granzscientific.sn1-ota: github://granzscientific/esphome-tools/config/sleep-control.yaml
 
 esphome:
   project:
@@ -45,8 +44,6 @@ logger:
   logs:
     # Prevent spamming from ntc_power switch
     switch: INFO
-  #hardware_uart: UART1
-  #baud_rate: 115200
 
 # Enable Home Assistant API
 api:
@@ -182,33 +179,7 @@ output:
     pin: GPIO14
     channel: 4
 
-#light:
-#  - platform: binary
-#    name: "Onboard LED"
-#    output: led_out
-
-#spi:
-#    clk_pin: GPIO7
-#    miso_pin: GPIO6
-#    mosi_pin: GPIO5
-#    interface: hardware
-
-#i2c:
-#  scl: GPIO7
-#  sda: GPIO6
-#  scan: true
-#  id: bus_a
-
-#one_wire:
-#  - platform: gpio
-#    pin: GPIO23
-
-#uart:
-#  tx_pin: GPIO16
-#  rx_pin: GPIO17
-#  baud_rate: 115200
-
-# Magnetic switch stuff (mouse trap sensor)
+# Magnetic switch (mouse trap sensor)
 binary_sensor:
   - platform: gpio
     pin:
@@ -221,4 +192,3 @@ deep_sleep:
     number: GPIO7
     allow_other_uses: true
   wakeup_pin_mode: INVERT_WAKEUP
-
